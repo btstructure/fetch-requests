@@ -46,6 +46,11 @@ function App() {
       .then(() => setInformation(filteredInformation));
   }
 
+  //EDIT 
+  function editInformation(){
+    
+  }
+
   return (
     <div className="App">
       {information.map((info) => (
@@ -54,6 +59,7 @@ function App() {
             {info.name}: {info.age}
           </p>
           <button onClick={() => deleteInformation(info.id)}>Delete</button>
+          <button onClick={()=>console.log("click")}>Edit</button>
         </div>
       ))}
       <div>
