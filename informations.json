@@ -1,23 +1,8 @@
 {
   "informations": [
     {
-      "id": 1,
-      "name": "Alex",
-      "age": 15
-    },
-    {
-      "name": "Jonas",
-      "age": 12,
-      "id": 3
-    },
-    {
-      "name": "Beatrice",
-      "age": "16",
-      "id": 4
-    },
-    {
-      "name": "Alex",
-      "age": "25",
+      "name": "Player",
+      "age": "20",
       "id": 5
     }
   ]

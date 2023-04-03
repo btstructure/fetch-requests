@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 function App() {
   const [information, setInformation] = useState([]);
   const [name, setName] = useState("");
@@ -46,9 +47,30 @@ function App() {
       .then(() => setInformation(filteredInformation));
   }
 
-  //EDIT 
-  function editInformation(){
-    
+  //PUT request
+  function editInformation(id) {
+    const editedInformation = information.find((info) => info.id === id);
+    const updatedInformation = {
+      ...editedInformation,
+      name: name,
+      age: age,
+    };
+    fetch(`http://localhost:3001/informations/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(updatedInformation),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => {
+        const newInformation = information.map((info) =>
+          info.id === id ? updatedInformation : info
+        );
+        setInformation(newInformation);
+        setName("");
+        setAge("");
+      });
   }
 
   return (
@@ -59,7 +81,7 @@ function App() {
             {info.name}: {info.age}
           </p>
           <button onClick={() => deleteInformation(info.id)}>Delete</button>
-          <button onClick={()=>console.log("click")}>Edit</button>
+          <button onClick={() => editInformation(info.id)}>Edit</button>
         </div>
       ))}
       <div>
